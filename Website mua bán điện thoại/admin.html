@@ -1268,6 +1268,22 @@
     initAccounts();
     initProducts();
     initOrders();
+
+    // Chọn năm hiển thị sales phù hợp nếu đã có Confirmed orders
+    const salesYearSelect = document.getElementById('sales-year');
+    if (salesYearSelect) {
+      const confirmedYears = Array.from(new Set(adminOrders
+        .filter(o => o.status === 'Confirmed')
+        .map(o => new Date(o.created).getFullYear())
+        .filter(y => !isNaN(y))));
+      if (confirmedYears.length > 0) {
+        const latestYear = Math.max(...confirmedYears);
+        salesYearSelect.value = String(latestYear);
+      } else {
+        salesYearSelect.value = String(new Date().getFullYear());
+      }
+    }
+
     loadAccounts(); loadProducts(); loadOrders(); updateDashboardStats(); loadSales();
   }
 
