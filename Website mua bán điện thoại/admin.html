@@ -883,10 +883,10 @@
       btn.style.display=text.includes(term)?'block':'none';
     });
   });
-
   function loadAccounts(){
-    const tbody=document.querySelector('#accounts-table tbody'); tbody.innerHTML='';
-    accountData.forEach(acc=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${acc.id}</td><td><img src="${acc.avatar}"/></td><td><a href="#">${acc.username}</a></td><td>${acc.email}</td><td>${acc.phone}</td><td>${acc.addr}</td><td>${acc.joined}</td><td><span class="badge ${acc.status==='Activated'?'active':'deactive'}">${acc.status}</span></td><td class="action-buttons"><button title="Xem" onclick="alert('Xem ${acc.username}')">👁</button><button title="Xóa" onclick="alert('Xóa ${acc.username}')">🗑</button></td>`; tbody.appendChild(tr);}); }
+  initAccounts();
+  renderAccountTable();
+}
   function loadProducts(){
     const tbody=document.querySelector('#products-table tbody'); tbody.innerHTML='';
     productData.forEach(p=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${p.id}</td><td><img src="${p.img}"/></td><td>${p.code}</td><td><a href="#">${p.name}</a></td><td>${p.brand}</td><td>${p.os}</td><td>${p.rate}</td><td>${p.created}</td><td><span class="badge ${p.status==='Còn hàng'?'stock':'soldout'}">${p.status}</span></td><td class="action-buttons"><button title="Sửa">✏</button><button title="Xóa">🗑</button></td>`;tbody.appendChild(tr);});}
